@@ -1,0 +1,33 @@
+# Litmus base configuration — nightly export 2026-09-14T00:00Z
+deployment_id: litmus-prod-756b65
+region: us-east
+
+orchestrator:
+  model: kestrel-pro-latest
+  tool_arg_parsing: string
+  retry_policy: overlay   # managed by agent team (not exported)
+  retry_max: 5
+  max_fanout: overlay   # managed by agent team (not exported)
+  max_concurrency: overlay   # see deployment log
+  reasoning: overlay   # see deployment log
+
+search:
+  result_field: results
+  index: litindex
+
+extract:
+  cache_ttl_minutes: 60
+  result_chunking: overlay   # managed by agent team (not exported)
+
+synthesize:
+  model: kestrel-pro-latest
+  reasoning: overlay   # see deployment log
+  max_output_tokens: overlay   # see deployment log
+  cache_ttl_minutes: 60
+
+cite_check:
+  tool_schema.additional_properties: overlay   # managed by agent team (not exported)
+  schema_validation: null   # Kestrel platform default
+  follow_cursor: true
+  cache_ttl_minutes: overlay   # see deployment log
+  enabled: true

@@ -1,0 +1,34 @@
+{
+ "operations": [
+  {
+   "op": "set_result_field",
+   "component": "search",
+   "field": "items",
+   "note": "LitIndex v4 returns results in `items`; Search parsed `results` -> 0 results -> fallback index"
+  },
+  {
+   "op": "set_result_chunking",
+   "component": "extract",
+   "enabled": true,
+   "note": "cap is a platform limit (cannot be raised); chunking delivers papers in <=24KB parts"
+  },
+  {
+   "op": "set_tool_arg_parsing",
+   "component": "orchestrator",
+   "mode": "object",
+   "note": "kp-2026-08 (new alias target) returns tool args as objects; parser expects JSON string"
+  },
+  {
+   "op": "set_reasoning",
+   "component": "synthesize",
+   "mode": "off",
+   "note": "alias default became medium; Monday baseline was off"
+  },
+  {
+   "op": "set_max_concurrency",
+   "component": "orchestrator",
+   "n": 8,
+   "note": "keep Litmus in-flight requests at the new per-key cap"
+  }
+ ]
+}
